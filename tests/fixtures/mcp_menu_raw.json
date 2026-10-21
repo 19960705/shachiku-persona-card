@@ -1,0 +1,73 @@
+{
+  "_note": "query-meals 真实响应的结构切片（数据取自 2026-10-21 麦当劳汕头东厦壹佰餐厅早餐菜单），用于验证 MCP 解析器。",
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-21 09:32:44",
+  "data": {
+    "categories": [
+      {
+        "name": "人气热卖",
+        "meals": [{ "code": "9900003458", "tags": ["三件套", "人气产品"] }]
+      },
+      {
+        "name": "麦满分系列",
+        "meals": [
+          { "code": "9900003458", "tags": ["三件套", "人气产品"] },
+          { "code": "9900003493", "tags": ["二件套"] },
+          { "code": "5022", "tags": ["单品", "人气产品"] }
+        ]
+      },
+      {
+        "name": "小食甜品\n/其他",
+        "meals": [
+          { "code": "9900008754", "tags": ["冰淇淋", "第二份半价"] },
+          { "code": "4825", "tags": ["小食"] },
+          { "code": "4437", "tags": ["小食"] }
+        ]
+      },
+      {
+        "name": "麦咖啡™",
+        "meals": [{ "code": "520689", "tags": ["热饮", "鲜萃咖啡"] }]
+      },
+      {
+        "name": "饮品",
+        "meals": [
+          { "code": "9900008751", "tags": ["冷饮"] },
+          { "code": "3757", "tags": ["冷饮"] }
+        ]
+      },
+      {
+        "name": "超值早餐",
+        "meals": [{ "code": "9900011872", "tags": ["人气产品"] }]
+      }
+    ],
+    "meals": {
+      "9900003458": {
+        "name": "猪柳蛋麦满分套餐",
+        "image": "",
+        "currentPrice": "15.9",
+        "originalPrice": "26.5",
+        "discountType": "随单购早餐卡优惠",
+        "canWithOrder": true
+      },
+      "9900003493": {
+        "name": "原味板烧鸡腿麦满分组合",
+        "image": "",
+        "currentPrice": "10.8",
+        "originalPrice": "18",
+        "canWithOrder": true
+      },
+      "5022": { "name": "猪柳蛋麦满分", "image": "", "currentPrice": "18", "originalPrice": "18", "canWithOrder": false },
+      "9900008754": { "name": "经典麦旋风", "image": "", "currentPrice": "15", "originalPrice": "15", "canWithOrder": false },
+      "4825": { "name": "脆薯饼", "image": "", "currentPrice": "8", "originalPrice": "8", "canWithOrder": false },
+      "4437": { "name": "玉米杯", "image": "", "currentPrice": "13", "originalPrice": "13", "canWithOrder": false },
+      "520689": { "name": "鲜萃咖啡", "image": "", "currentPrice": "10", "originalPrice": "10", "canWithOrder": false },
+      "9900008751": { "name": "可乐", "image": "", "currentPrice": "9.5", "originalPrice": "9.5", "canWithOrder": false },
+      "3757": { "name": "纯悦", "image": "", "currentPrice": "7.5", "originalPrice": "7.5", "canWithOrder": false },
+      "9900011872": { "name": "芝芝火腿扒堡组合", "image": "", "currentPrice": "9.9", "originalPrice": "9.9", "canWithOrder": false }
+    },
+    "frequent": {}
+  },
+  "traceId": "fixture"
+}

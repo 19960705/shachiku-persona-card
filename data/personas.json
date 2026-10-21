@@ -1,0 +1,558 @@
+{
+  "version": "1.0.0",
+  "note": "人设只描述需求特征（prefer 权重 / 价格带 / 搭配策略），具体餐品由现场可售菜单实时匹配，避免写死 SKU。",
+  "personas": [
+    {
+      "id": "overtime_dog",
+      "name": "加班狗",
+      "emoji": "🌙",
+      "taglines": [
+        "今天的你只想快点填饱肚子",
+        "能一口吃完的，就别分两口",
+        "工位到取餐台，是你今天唯一的运动"
+      ],
+      "keywords": [
+        "汉堡",
+        "薯条",
+        "可乐",
+        "深夜",
+        "加班",
+        "填饱",
+        "饿",
+        "三件套",
+        "套餐",
+        "顶饱",
+        "来不及",
+        "赶工"
+      ],
+      "prefer": {
+        "burger": 0.9,
+        "hot": 0.5,
+        "fried": 0.7,
+        "drink": 0.6,
+        "combo": 0.5,
+        "combo3": 0.4
+      },
+      "price_band": "mid",
+      "strategy": "combo",
+      "slots": [
+        "burger",
+        "fried",
+        "drink"
+      ],
+      "quantity_hint": 1,
+      "periods": [
+        "latenight",
+        "dinner"
+      ],
+      "tips": [
+        "别选需要剥壳、拆包装的东西，一只手要留给鼠标"
+      ],
+      "closing": [
+        "要下单吗？",
+        "还是再 Roll 一次？"
+      ]
+    },
+    {
+      "id": "budget_warrior",
+      "name": "预算战士",
+      "emoji": "🪙",
+      "taglines": [
+        "每一分钱都要算清楚",
+        "不是吃不起，是要吃得值",
+        "钱包的厚度决定今天的难度"
+      ],
+      "keywords": [
+        "省钱",
+        "便宜",
+        "划算",
+        "券",
+        "优惠",
+        "预算",
+        "穷",
+        "性价比",
+        "实惠",
+        "打折",
+        "特价"
+      ],
+      "prefer": {
+        "combo": 0.8,
+        "breakfast": 0.35,
+        "drink": 0.2,
+        "light": 0.2
+      },
+      "price_band": "low",
+      "strategy": "combo",
+      "slots": [
+        "burger",
+        "drink"
+      ],
+      "quantity_hint": 1,
+      "periods": [
+        "breakfast",
+        "lunch"
+      ],
+      "tips": [
+        "优先看套餐/组合价，单点通常更贵",
+        "门店可用券一并核价，能叠加就先叠"
+      ],
+      "coupon_mode": true,
+      "closing": [
+        "要下单吗？",
+        "先看看这家店能用什么券？"
+      ]
+    },
+    {
+      "id": "calorie_anxiety",
+      "name": "热量焦虑党",
+      "emoji": "🥗",
+      "taglines": [
+        "想吃又怕胖的经典社畜",
+        "先算热量，再算价格",
+        "嘴上说不饿，手很诚实"
+      ],
+      "keywords": [
+        "低卡",
+        "热量",
+        "沙拉",
+        "去酱",
+        "减肥",
+        "轻食",
+        "健康",
+        "少油",
+        "无糖",
+        "不长胖",
+        "清淡"
+      ],
+      "prefer": {
+        "lowcal": 1.2,
+        "light": 0.7,
+        "drink": 0.45,
+        "breakfast": 0.2,
+        "burger": 0.15
+      },
+      "price_band": "mid",
+      "strategy": "compose",
+      "slots": [
+        "lowcal",
+        "drink"
+      ],
+      "quantity_hint": 1,
+      "periods": [
+        "lunch",
+        "teatime"
+      ],
+      "tips": [
+        "优先看「500 大卡套餐」，那是官方按热量配好的",
+        "汉堡类可要求去酱，饮料换无糖"
+      ],
+      "closing": [
+        "要下单吗？",
+        "要再 Roll 一次？"
+      ],
+      "fallback_slots": [
+        "light",
+        "drink"
+      ]
+    },
+    {
+      "id": "happy_looper",
+      "name": "快乐复读机",
+      "emoji": "🍦",
+      "taglines": [
+        "今天不想思考只想快乐",
+        "甜的那一口，才是下班的分界线",
+        "糖分到位，情绪复位"
+      ],
+      "keywords": [
+        "甜品",
+        "奶昔",
+        "麦旋风",
+        "冰淇淋",
+        "圣代",
+        "圆筒",
+        "派",
+        "开心",
+        "甜",
+        "解压",
+        "嘴馋",
+        "雪糕"
+      ],
+      "prefer": {
+        "dessert": 1.0,
+        "dessert2": 0.6,
+        "drink": 0.2
+      },
+      "price_band": "mid",
+      "strategy": "single",
+      "slots": [
+        "dessert"
+      ],
+      "quantity_hint": 1,
+      "periods": [
+        "teatime",
+        "latenight"
+      ],
+      "tips": [
+        "第二份半价的冰淇淋，可以顺手带一个给同事"
+      ],
+      "closing": [
+        "要下单吗？",
+        "还是再 Roll 一次？"
+      ]
+    },
+    {
+      "id": "indecisive",
+      "name": "选择困难症",
+      "emoji": "🌀",
+      "taglines": [
+        "菜单看了五分钟还没决定",
+        "都行，等于都不行",
+        "把选择权交给算法，比交给自己靠谱"
+      ],
+      "keywords": [
+        "不知道",
+        "随便",
+        "都行",
+        "犹豫",
+        "选不出",
+        "纠结",
+        "无所谓",
+        "看你的",
+        "随机"
+      ],
+      "prefer": {
+        "combo": 0.3,
+        "hot": 0.2,
+        "dessert": 0.2
+      },
+      "price_band": "any",
+      "strategy": "random",
+      "slots": [
+        "burger",
+        "drink"
+      ],
+      "quantity_hint": 1,
+      "periods": [],
+      "tips": [
+        "本次推荐带随机性，不满意直接再 Roll 一次"
+      ],
+      "closing": [
+        "就它了，要下单吗？",
+        "不满意，再 Roll 一次？"
+      ]
+    },
+    {
+      "id": "slack_master",
+      "name": "摸鱼大师",
+      "emoji": "🐟",
+      "taglines": [
+        "今天只想安静坐一会儿",
+        "点餐是借口，离开工位才是目的",
+        "一杯咖啡换四十分钟自由"
+      ],
+      "keywords": [
+        "咖啡",
+        "小食",
+        "轻量",
+        "坐一会儿",
+        "休息",
+        "摸鱼",
+        "醒神",
+        "提神",
+        "下午",
+        "犯困",
+        "慢一点"
+      ],
+      "prefer": {
+        "coffee": 1.0,
+        "fried": 0.35,
+        "dessert": 0.2,
+        "drink": 0.2
+      },
+      "price_band": "mid",
+      "strategy": "compose",
+      "slots": [
+        "coffee",
+        "fried"
+      ],
+      "quantity_hint": 1,
+      "periods": [
+        "teatime",
+        "lunch"
+      ],
+      "tips": [
+        "选不占手的单品，方便边刷手机边坐"
+      ],
+      "closing": [
+        "要下单吗？",
+        "还是再 Roll 一次？"
+      ]
+    },
+    {
+      "id": "midnight_coder",
+      "name": "深夜程序员",
+      "emoji": "💻",
+      "taglines": [
+        "代码还没写完胃先投降了",
+        "第 47 次跑测试，先跑个取餐",
+        "凌晨的 bug，需要重口的燃料"
+      ],
+      "keywords": [
+        "凌晨",
+        "代码",
+        "还在写",
+        "通宵",
+        "debug",
+        "上线",
+        "熬夜",
+        "夜宵",
+        "写代码",
+        "加班到"
+      ],
+      "prefer": {
+        "hot": 0.9,
+        "burger": 0.6,
+        "fried": 0.6,
+        "coffee": 0.5,
+        "combo": 0.5,
+        "combo3": 0.3
+      },
+      "price_band": "mid",
+      "strategy": "combo",
+      "slots": [
+        "burger",
+        "fried",
+        "coffee"
+      ],
+      "quantity_hint": 1,
+      "periods": [
+        "latenight"
+      ],
+      "tips": [
+        "重口是刚需，但也别让胃替代码背锅"
+      ],
+      "closing": [
+        "要下单吗？",
+        "还是再 Roll 一次？"
+      ]
+    },
+    {
+      "id": "thrift_actuary",
+      "name": "省钱精算师",
+      "emoji": "🧮",
+      "taglines": [
+        "不把券用到极致不罢休",
+        "原价？那是对我的不尊重",
+        "省下来的钱，是另一份工资"
+      ],
+      "keywords": [
+        "最省",
+        "怎么便宜",
+        "叠加",
+        "最优券",
+        "券组合",
+        "极限",
+        "低价",
+        "抠",
+        "凑单",
+        "满减"
+      ],
+      "prefer": {
+        "combo": 0.9,
+        "breakfast": 0.35,
+        "drink": 0.2
+      },
+      "price_band": "low",
+      "strategy": "combo",
+      "slots": [
+        "burger",
+        "drink"
+      ],
+      "quantity_hint": 1,
+      "periods": [
+        "breakfast",
+        "lunch"
+      ],
+      "tips": [
+        "先查门店可用券，再核价对比用券前后",
+        "凑单门槛差一点点时，加个最便宜的单品更划算"
+      ],
+      "coupon_mode": true,
+      "closing": [
+        "要下单吗？",
+        "先算一遍最优券组合？"
+      ]
+    },
+    {
+      "id": "cheat_day",
+      "name": "放纵日",
+      "emoji": "🔥",
+      "taglines": [
+        "今天允许自己放纵一下",
+        "计划明天再开始，今天先快乐",
+        "热量是别人的事"
+      ],
+      "keywords": [
+        "想吃好的",
+        "犒劳",
+        "不管了",
+        "放纵",
+        "庆祝",
+        "奖励自己",
+        "大吃",
+        "豪华",
+        "加量"
+      ],
+      "prefer": {
+        "hot": 0.85,
+        "burger": 0.7,
+        "fried": 0.7,
+        "dessert": 0.6,
+        "multi": 0.4
+      },
+      "price_band": "high",
+      "strategy": "compose",
+      "slots": [
+        "burger",
+        "fried",
+        "dessert"
+      ],
+      "quantity_hint": 1,
+      "periods": [
+        "dinner",
+        "latenight"
+      ],
+      "tips": [
+        "犒劳要犒劳到位，别在最后一步省三块钱"
+      ],
+      "closing": [
+        "要下单吗？",
+        "还是再 Roll 一次？"
+      ]
+    },
+    {
+      "id": "breakfast_soldier",
+      "name": "早餐战士",
+      "emoji": "🌅",
+      "taglines": [
+        "一天的战斗从早餐开始",
+        "早餐吃好，会议都能多扛两轮",
+        "早八的人，需要早七的碳水"
+      ],
+      "keywords": [
+        "早餐",
+        "早上",
+        "麦满分",
+        "早饭",
+        "早八",
+        "油条",
+        "豆浆",
+        "上班路上",
+        "清晨"
+      ],
+      "prefer": {
+        "breakfast": 1.0,
+        "combo": 0.7,
+        "drink": 0.4
+      },
+      "price_band": "low",
+      "strategy": "combo",
+      "slots": [
+        "breakfast",
+        "drink"
+      ],
+      "quantity_hint": 1,
+      "periods": [
+        "breakfast"
+      ],
+      "tips": [
+        "早餐套餐通常比单点划算，且出餐快"
+      ],
+      "closing": [
+        "要下单吗？",
+        "还是再 Roll 一次？"
+      ]
+    },
+    {
+      "id": "team_lead",
+      "name": "团建负责人",
+      "emoji": "👥",
+      "taglines": [
+        "今天你负责让大家吃饱",
+        "点单的人，永远是最后一个吃的",
+        "众口难调，但预算好调"
+      ],
+      "keywords": [
+        "多人",
+        "一起",
+        "拼单",
+        "团建",
+        "同事",
+        "大家一起",
+        "几个人",
+        "组里",
+        "聚餐",
+        "分享"
+      ],
+      "prefer": {
+        "multi": 1.0,
+        "combo": 0.7,
+        "hot": 0.4,
+        "drink": 0.4
+      },
+      "price_band": "mid",
+      "strategy": "auto",
+      "slots": [
+        "burger",
+        "fried",
+        "drink"
+      ],
+      "quantity_hint": 3,
+      "periods": [
+        "lunch",
+        "teatime"
+      ],
+      "tips": [
+        "按人头 ×N 下单，先确认有没有人不吃牛肉"
+      ],
+      "closing": [
+        "要下单吗？",
+        "先改份数？"
+      ]
+    },
+    {
+      "id": "random_office",
+      "name": "随机社畜",
+      "emoji": "🎲",
+      "taglines": [
+        "今天的你，就是普通社畜",
+        "没有特别想吃的，也没有特别不想吃的",
+        "平凡的一天，配平凡的一餐"
+      ],
+      "keywords": [],
+      "prefer": {
+        "combo": 0.4,
+        "hot": 0.3,
+        "drink": 0.3,
+        "burger": 0.3
+      },
+      "price_band": "any",
+      "strategy": "auto",
+      "slots": [
+        "burger",
+        "drink"
+      ],
+      "quantity_hint": 1,
+      "periods": [],
+      "is_fallback": true,
+      "tips": [
+        "没有明确信号时，给你一个不出错的选择"
+      ],
+      "closing": [
+        "要下单吗？",
+        "还是再 Roll 一次？"
+      ]
+    }
+  ]
+}

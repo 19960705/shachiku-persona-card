@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1040" viewBox="0 0 720 1040">
+<defs>
+<linearGradient id="bar" x1="0" y1="0" x2="1" y2="0"><stop offset="62%" stop-color="#DA291C"/><stop offset="62%" stop-color="#FFC72C"/></linearGradient>
+<radialGradient id="av" cx="34%" cy="30%" r="72%"><stop offset="0%" stop-color="#FFF6E3"/><stop offset="62%" stop-color="#FFE0A8"/><stop offset="100%" stop-color="#FFD07A"/></radialGradient>
+</defs>
+<rect width="720" height="1040" rx="0" fill="#EFE9DD"/>
+<rect x="24" y="18" width="672" height="1004" rx="28" fill="#FFFDF8"/>
+<path d="M24 46 A28 28 0 0 1 52 18 H696 V32 H24 Z" fill="url(#bar)"/>
+<rect x="24" y="18" width="672" height="14" fill="url(#bar)"/>
+<text x="80" y="78" font-size="15" letter-spacing="6" fill="#B4894F" font-weight="600" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">今日人设卡</text>
+<text x="80" y="100" font-size="12" letter-spacing="3" fill="#9A8F80" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">ROLL 模式</text>
+<text x="640" y="84" font-size="13" fill="#A99C8B" text-anchor="end" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">No.SC-20261021-6849</text>
+<circle cx="360.0" cy="200" r="66" fill="url(#av)"/>
+<text x="360.0" y="228" font-size="66" text-anchor="middle">🥗</text>
+<text x="360.0" y="330" font-size="58" font-weight="800" fill="#241C14" text-anchor="middle" letter-spacing="2" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">热量焦虑党</text>
+<text x="360.0" y="372" font-size="22" fill="#7A6A57" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">「先算热量，再算价格」</text>
+<rect x="80" y="420" width="560" height="224" rx="20" fill="#FFF6E8" stroke="#F2DFC2" stroke-width="1.5"/>
+<text x="108" y="458" font-size="13" letter-spacing="5" fill="#B4894F" font-weight="600" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">今日推荐</text>
+<text x="108" y="498" font-size="21" fill="#2E2519" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">玉米杯</text>
+<text x="612" y="498" font-size="18" fill="#6E6152" text-anchor="end" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">¥13.00</text>
+<line x1="108" y1="510" x2="612" y2="510" stroke="#EBD9BE" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="108" y="538" font-size="21" fill="#2E2519" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">纯悦</text>
+<text x="612" y="538" font-size="18" fill="#6E6152" text-anchor="end" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">¥7.50</text>
+<line x1="108" y1="550" x2="612" y2="550" stroke="#EBD9BE" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="108" y="610" font-size="15" letter-spacing="3" fill="#8A7A66" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">合计</text>
+<text x="612" y="616" font-size="40" font-weight="800" fill="#DA291C" text-anchor="end" font-family="PingFang SC, sans-serif">¥20.50</text>
+<line x1="108" y1="578" x2="612" y2="578" stroke="#E4CFAE" stroke-width="2"/>
+<rect x="80" y="666" width="260" height="36" rx="18" fill="#FFF4DF" stroke="#F0DCAF" stroke-width="1"/>
+<text x="210.0" y="690" font-size="14" font-weight="600" text-anchor="middle" fill="#9A6A17" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">○ 示例数据 · 非实时</text>
+<text x="84" y="728" font-size="13" letter-spacing="5" fill="#B4894F" font-weight="600" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">为什么是它</text>
+<text x="84" y="756" font-size="15" fill="#6E6152" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">· 玉米杯：相对轻负担(+0.7)、价格带吻合(+0.5)</text>
+<text x="84" y="780" font-size="15" fill="#6E6152" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">· 纯悦：相对轻负担(+0.7)、配饮料(+0.5)</text>
+<line x1="80" y1="826" x2="640" y2="826" stroke="#EFE3CF" stroke-width="1.5"/>
+<text x="80" y="850" font-size="15" fill="#B4894F" letter-spacing="2" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">门店</text>
+<text x="136" y="850" font-size="15" fill="#6E6152" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">麦当劳汕头东厦壹佰餐厅</text>
+<text x="80" y="882" font-size="15" fill="#B4894F" letter-spacing="2" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">时段</text>
+<text x="136" y="882" font-size="15" fill="#6E6152" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">早餐 · 2026-10-21 09:32</text>
+<text x="360.0" y="948" font-size="19" fill="#241C14" text-anchor="middle" letter-spacing="1" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">要下单吗？  ·  还是再 Roll 一次？</text>
+<text x="360.0" y="978" font-size="11" fill="#B9AE9E" text-anchor="middle" letter-spacing="2" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">SHACHIKU PERSONA CARD</text>
+</svg>

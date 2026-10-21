@@ -1,0 +1,154 @@
+{
+  "_note": "query-meals 真实响应切片 · 2026-10-21 10:59 午餐时段 · 门店 1400483。用于验证有汉堡/薯条时段下的推荐，价格均为当时菜单价（未核价）。",
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-21 10:59:51",
+  "data": {
+    "categories": [
+      {
+        "name": "精选单人餐",
+        "meals": [
+          { "code": "9900004064", "tags": ["经典精选", "爆款"] },
+          { "code": "9900004236", "tags": ["麦金卡"] }
+        ]
+      },
+      {
+        "name": "鸡肉汉堡\n/卷",
+        "meals": [
+          { "code": "9900016075", "tags": ["上新"] },
+          { "code": "9900016073", "tags": ["上新"] },
+          { "code": "521953", "tags": ["上新"] },
+          { "code": "521952", "tags": ["上新"] },
+          { "code": "9900005462", "tags": ["套餐"] },
+          { "code": "9900005456", "tags": ["套餐"] },
+          { "code": "9900005453", "tags": ["套餐"] },
+          { "code": "1440", "tags": ["单品"] },
+          { "code": "1406", "tags": ["单品"] },
+          { "code": "1450", "tags": ["单品"] }
+        ]
+      },
+      {
+        "name": "小食拼盘\n/多人餐",
+        "meals": [
+          { "code": "9900006332", "tags": ["小食拼盘"] },
+          { "code": "9900015730", "tags": ["小食拼盘"] },
+          { "code": "9900004066", "tags": ["小食拼盘"] }
+        ]
+      },
+      {
+        "name": "巨无霸\n牛鱼肉堡",
+        "meals": [
+          { "code": "9900005466", "tags": ["套餐"] },
+          { "code": "9900005464", "tags": ["套餐"] },
+          { "code": "9900005449", "tags": ["套餐"] },
+          { "code": "9900005411", "tags": ["套餐"] },
+          { "code": "9900005468", "tags": ["套餐"] },
+          { "code": "1100", "tags": ["单品"] },
+          { "code": "1120", "tags": ["单品"] },
+          { "code": "4648", "tags": ["单品"] },
+          { "code": "1106", "tags": ["单品"] },
+          { "code": "521316", "tags": ["单品"] }
+        ]
+      },
+      {
+        "name": "安格斯MAX\n厚牛堡",
+        "meals": [
+          { "code": "9900005428", "tags": ["套餐"] },
+          { "code": "9900005430", "tags": ["套餐"] },
+          { "code": "511781", "tags": ["单品"] },
+          { "code": "511782", "tags": ["单品"] }
+        ]
+      },
+      {
+        "name": "小食甜品\n/其他",
+        "meals": [
+          { "code": "4810", "tags": ["小食"] },
+          { "code": "4437", "tags": ["小食"] },
+          { "code": "6102", "tags": ["小食"] },
+          { "code": "9900008752", "tags": ["派"] },
+          { "code": "9900008754", "tags": ["冰淇淋"] },
+          { "code": "521950", "tags": ["冰淇淋"] },
+          { "code": "515837", "tags": ["冰淇淋"] },
+          { "code": "9900008745", "tags": ["冰淇淋"] }
+        ]
+      },
+      {
+        "name": "麦咖啡™",
+        "meals": [
+          { "code": "520689", "tags": ["鲜萃咖啡"] },
+          { "code": "515948", "tags": ["限定特惠"] }
+        ]
+      },
+      {
+        "name": "500\n大卡套餐",
+        "meals": [
+          { "code": "9900011128", "tags": ["粉丝之选"] },
+          { "code": "9900011123", "tags": [] },
+          { "code": "9900011126", "tags": [] }
+        ]
+      },
+      {
+        "name": "饮品",
+        "meals": [
+          { "code": "9900008751", "tags": ["冷饮"] },
+          { "code": "3010", "tags": ["冷饮"] },
+          { "code": "3757", "tags": ["冷饮"] },
+          { "code": "521817", "tags": ["冷饮"] },
+          { "code": "3505", "tags": ["热饮"] }
+        ]
+      }
+    ],
+    "meals": {
+      "9900004064": { "name": "精选单人餐三件套", "currentPrice": "34.5", "originalPrice": "46.5", "canWithOrder": false },
+      "9900004236": { "name": "人气超值四件套随心选", "currentPrice": "28", "originalPrice": "57.5", "canWithOrder": true, "discountType": "随单购麦金卡优惠" },
+      "9900016075": { "name": "龙焰芝士棒鸡腿堡三件套", "currentPrice": "29.9", "originalPrice": "51", "canWithOrder": false },
+      "9900016073": { "name": "龙焰鸡腿堡三件套", "currentPrice": "26.9", "originalPrice": "48", "canWithOrder": false },
+      "521953": { "name": "龙焰芝士棒鸡腿堡", "currentPrice": "27", "originalPrice": "27", "canWithOrder": false },
+      "521952": { "name": "龙焰鸡腿堡", "currentPrice": "24", "originalPrice": "24", "canWithOrder": false },
+      "9900005462": { "name": "板烧鸡腿堡三件套", "currentPrice": "34.5", "originalPrice": "47.5", "canWithOrder": false },
+      "9900005456": { "name": "麦辣鸡腿汉堡三件套", "currentPrice": "33.5", "originalPrice": "46.5", "canWithOrder": false },
+      "9900005453": { "name": "麦香鸡套餐", "currentPrice": "27.5", "originalPrice": "40.5", "canWithOrder": false },
+      "1440": { "name": "麦辣鸡腿汉堡", "currentPrice": "22.5", "originalPrice": "22.5", "canWithOrder": false },
+      "1406": { "name": "板烧鸡腿堡", "currentPrice": "23.5", "originalPrice": "23.5", "canWithOrder": false },
+      "1450": { "name": "麦香鸡", "currentPrice": "16.5", "originalPrice": "16.5", "canWithOrder": false },
+      "9900006332": { "name": "薄皮V翅双拼十翅", "currentPrice": "49.9", "originalPrice": "74.5", "canWithOrder": false },
+      "9900015730": { "name": "BFF四宫格小食盘", "currentPrice": "40.3", "originalPrice": "54.5", "canWithOrder": false },
+      "9900004066": { "name": "堡堡随心拼（7件任选）", "currentPrice": "73", "originalPrice": "103", "canWithOrder": false },
+      "9900005466": { "name": "巨无霸三件套", "currentPrice": "37.5", "originalPrice": "50.5", "canWithOrder": false },
+      "9900005464": { "name": "双层吉士汉堡套餐", "currentPrice": "34", "originalPrice": "47", "canWithOrder": false },
+      "9900005449": { "name": "吉士汉堡包套餐", "currentPrice": "26.5", "originalPrice": "39.5", "canWithOrder": false },
+      "9900005411": { "name": "不素之霸双层牛堡三件套", "currentPrice": "36.5", "originalPrice": "49.5", "canWithOrder": false },
+      "9900005468": { "name": "培根蔬萃双层牛堡三件套", "currentPrice": "35.5", "originalPrice": "48.5", "canWithOrder": false },
+      "1100": { "name": "巨无霸", "currentPrice": "26.5", "originalPrice": "26.5", "canWithOrder": false },
+      "1120": { "name": "双层吉士汉堡", "currentPrice": "23", "originalPrice": "23", "canWithOrder": false },
+      "4648": { "name": "不素之霸双层牛堡", "currentPrice": "25.5", "originalPrice": "25.5", "canWithOrder": false },
+      "1106": { "name": "培根蔬萃双层牛堡", "currentPrice": "24.5", "originalPrice": "24.5", "canWithOrder": false },
+      "521316": { "name": "高达吉士双牛堡", "currentPrice": "22.5", "originalPrice": "22.5", "canWithOrder": false },
+      "9900005428": { "name": "培根安格斯厚牛堡三件套", "currentPrice": "45.5", "originalPrice": "58.5", "canWithOrder": false },
+      "9900005430": { "name": "芝士安格斯厚牛堡三件套", "currentPrice": "42.5", "originalPrice": "55.5", "canWithOrder": false },
+      "511781": { "name": "培根安格斯厚牛堡", "currentPrice": "34.5", "originalPrice": "34.5", "canWithOrder": false },
+      "511782": { "name": "芝士安格斯厚牛堡", "currentPrice": "31.5", "originalPrice": "31.5", "canWithOrder": false },
+      "4810": { "name": "薯条", "currentPrice": "14", "originalPrice": "14", "canWithOrder": false },
+      "4437": { "name": "玉米杯", "currentPrice": "13", "originalPrice": "13", "canWithOrder": false },
+      "6102": { "name": "苹果片", "currentPrice": "7", "originalPrice": "7", "canWithOrder": false },
+      "9900008752": { "name": "派", "currentPrice": "8.5", "originalPrice": "8.5", "canWithOrder": false },
+      "9900008754": { "name": "经典麦旋风", "currentPrice": "15", "originalPrice": "15", "canWithOrder": false },
+      "521950": { "name": "蓝莓爆爆珠麦旋风", "currentPrice": "16", "originalPrice": "16", "canWithOrder": false },
+      "515837": { "name": "圆筒冰淇淋", "currentPrice": "5", "originalPrice": "5", "canWithOrder": false },
+      "9900008745": { "name": "新地", "currentPrice": "12.5", "originalPrice": "12.5", "canWithOrder": false },
+      "520689": { "name": "鲜萃咖啡", "currentPrice": "10", "originalPrice": "10", "canWithOrder": false },
+      "515948": { "name": "浓浓黑巧（冰/热）", "currentPrice": "17.9", "originalPrice": "25", "canWithOrder": false },
+      "9900011128": { "name": "“堡”你欢乐套餐", "currentPrice": "28", "originalPrice": "42.5", "canWithOrder": false },
+      "9900011123": { "name": "“辣”么快乐套餐", "currentPrice": "24", "originalPrice": "36.5", "canWithOrder": false },
+      "9900011126": { "name": "酥脆无双套餐", "currentPrice": "20.5", "originalPrice": "20.5", "canWithOrder": false },
+      "9900008751": { "name": "可乐", "currentPrice": "9.5", "originalPrice": "9.5", "canWithOrder": false },
+      "3010": { "name": "雪碧", "currentPrice": "9.5", "originalPrice": "9.5", "canWithOrder": false },
+      "3757": { "name": "纯悦", "currentPrice": "7.5", "originalPrice": "7.5", "canWithOrder": false },
+      "521817": { "name": "【美汁源】“多汁柠柠”", "currentPrice": "12", "originalPrice": "12", "canWithOrder": false },
+      "3505": { "name": "锡兰红茶", "currentPrice": "11", "originalPrice": "11", "canWithOrder": false }
+    },
+    "frequent": { "code": "1700", "tags": ["我的常点"] }
+  },
+  "traceId": "fixture"
+}

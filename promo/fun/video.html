@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>社畜人设卡 · 18:59</title>
+<style>
+  :root{
+    --red:#DA2A1C; --red2:#B81E12;
+    --yel:#FFC72C; --yel2:#F0A800;
+    --ink:#141110; --cream:#FBF6EC; --grn:#0E7A55;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+  body{font-family:"PingFang SC","Hiragino Sans GB","Heiti SC","Microsoft YaHei",sans-serif;
+       -webkit-font-smoothing:antialiased}
+  #stage{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;
+         background:var(--cream);will-change:transform}
+  section{position:absolute;left:0;top:0;width:1080px;height:1920px;opacity:0}
+  .mono{font-family:"SF Mono",Menlo,"Roboto Mono",monospace;font-variant-numeric:tabular-nums}
+  .heavy{font-weight:900;-webkit-text-stroke:1.5px currentColor}
+
+  /* ================= S1 ================= */
+  #s1{background:#0B0A09;display:flex;flex-direction:column;
+      align-items:center;justify-content:center}
+  #clock{font-size:286px;font-weight:900;letter-spacing:-.055em;color:var(--cream);
+         line-height:1;font-variant-numeric:tabular-nums}
+  #clocktick{width:150px;height:7px;background:var(--red);margin:30px 0 0;opacity:.95}
+  #s1a{margin-top:84px;font-size:104px;font-weight:900;color:var(--cream);letter-spacing:.02em}
+  #s1b{margin-top:30px;font-size:70px;font-weight:700;color:#7C746C;letter-spacing:.05em}
+  #s1foot{position:absolute;left:0;right:0;bottom:150px;text-align:center;
+          font-size:25px;letter-spacing:.36em;color:#4A443E}
+
+  /* ================= S2 ================= */
+  #s2{background:var(--cream)}
+  #s2 .bar{position:absolute;left:0;top:0;width:1080px;height:158px;background:#EFEAE0;
+           border-bottom:4px solid #DFD7C9;display:flex;align-items:center;
+           padding:0 54px;justify-content:space-between}
+  #s2 .bar .t{font-size:38px;font-weight:800;color:#2E2924}
+  #s2 .bar .r{font-size:30px;color:#9A9184;letter-spacing:.1em}
+  #s2 .chat{position:absolute;left:0;top:250px;width:1080px;padding:0 54px}
+  .row{display:flex;gap:20px;margin-bottom:44px;align-items:flex-start}
+  .row.rev{flex-direction:row-reverse}
+  .av{width:100px;height:100px;border-radius:16px;flex:0 0 100px;display:flex;
+      align-items:center;justify-content:center;font-size:52px;
+      border:4px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+  .av.boss{background:#B9B4AC}
+  .av.me{background:var(--yel)}
+  .bub{max-width:700px;padding:32px 38px;font-size:54px;line-height:1.32;font-weight:700;
+       border:4px solid var(--ink);border-radius:20px}
+  .bub.left{background:#fff;box-shadow:9px 9px 0 var(--ink);transform-origin:left center}
+  .bub.right{background:#95EC69;box-shadow:-9px 9px 0 var(--ink);transform-origin:right center}
+  #typing{display:flex;gap:14px;padding:30px 34px;background:#fff;border:4px solid var(--ink);
+          border-radius:20px;box-shadow:9px 9px 0 var(--ink)}
+  #typing i{width:20px;height:20px;border-radius:50%;background:#A8A29A;display:block}
+  #s2sticker{position:absolute;left:54px;top:1140px;right:54px}
+  #s2sticker .s{display:inline-block;background:var(--yel);border:5px solid var(--ink);
+                box-shadow:12px 12px 0 var(--ink);padding:20px 34px;
+                font-size:64px;font-weight:900;color:var(--ink);line-height:1.24}
+  #s2note{position:absolute;left:58px;top:1420px;font-size:38px;font-weight:600;color:#7A7166;
+          line-height:1.6}
+
+  /* ================= S3 ================= */
+  #s3{background:#EDE8DE}
+  #viewport{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden}
+  #list{position:absolute;left:0;top:0;width:1080px;will-change:transform}
+  .mrow{height:132px;display:flex;align-items:center;justify-content:space-between;
+        padding:0 54px;border-bottom:2px solid #DBD4C6;background:#FBF6EC}
+  .mrow .nm{font-size:38px;font-weight:600;color:#221E1A;max-width:720px;
+            white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mrow .pr{font-size:38px;font-weight:800;color:var(--red)}
+  .mrow .ph{width:96px;height:96px;border-radius:12px;background:#E8E0D0;margin-right:26px;
+            flex:0 0 96px;display:flex;align-items:center;justify-content:center;font-size:44px}
+  #s3hud{position:absolute;left:0;top:0;width:1080px;height:154px;background:#141110;
+         display:flex;align-items:center;justify-content:space-between;padding:0 54px;z-index:6}
+  #s3hud .lbl{font-size:28px;color:#BDB5A8;letter-spacing:.24em}
+  #s3hud .big{font-size:64px;font-weight:900;color:var(--yel)}
+  #s3end{position:absolute;left:0;right:0;top:1210px;text-align:center;z-index:5;
+         font-size:30px;letter-spacing:.3em;color:#B3AA9B;opacity:0}
+  #s3mark{position:absolute;left:30px;right:30px;height:150px;
+          border:6px solid var(--red);border-radius:16px;z-index:7;opacity:0}
+  #s3tag{position:absolute;left:50%;background:var(--red);color:#fff;font-size:50px;
+         font-weight:900;padding:14px 40px;border:5px solid var(--ink);
+         box-shadow:10px 10px 0 var(--ink);z-index:9;letter-spacing:.06em;
+         white-space:nowrap;opacity:0}
+  #s3bar{position:absolute;left:0;bottom:0;width:1080px;height:210px;background:#141110;
+         z-index:8;display:flex;align-items:center;justify-content:space-between;padding:0 54px}
+  #s3bar .l{font-size:26px;color:#8C8278;letter-spacing:.24em}
+  #s3bar .n{font-size:52px;font-weight:900;color:var(--cream);margin-top:8px}
+  #s3bar .n b{color:var(--yel)}
+  #s3btn{background:var(--red);color:#fff;font-size:44px;font-weight:900;
+         padding:22px 42px;border:4px solid #fff;border-radius:14px;letter-spacing:.08em}
+
+  /* ================= S4 ================= */
+  #s4{background:var(--cream)}
+  #pmock{position:absolute;left:70px;top:360px;width:940px;background:#fff;
+         border:5px solid var(--ink);box-shadow:16px 16px 0 var(--ink);padding:44px 50px}
+  #pmock .top{display:flex;align-items:center;gap:22px;margin-bottom:30px}
+  #pmock .ph2{width:116px;height:116px;border-radius:16px;background:var(--yel);
+              display:flex;align-items:center;justify-content:center;font-size:62px;
+              border:4px solid var(--ink);flex:0 0 116px}
+  #pmock .pn{font-size:46px;font-weight:800;line-height:1.22;color:var(--ink)}
+  #pmock .prow{display:flex;align-items:flex-end;justify-content:space-between;
+               border-top:3px dashed #D8D0C2;padding-top:30px}
+  #p15{font-size:82px;font-weight:900;color:#5D564D;position:relative;letter-spacing:-.03em}
+  #p15 .lbl2{font-size:26px;font-weight:700;color:#A8A29A;letter-spacing:.14em;
+             display:block;margin-top:6px}
+  #slash{position:absolute;left:-16px;top:46%;height:12px;background:var(--red);
+         width:0;transform:rotate(-7deg);border-radius:6px}
+  #p26{position:absolute;left:70px;top:742px;width:940px;text-align:right;
+       font-size:182px;font-weight:900;color:var(--red);letter-spacing:-.055em;
+       line-height:1;text-shadow:11px 11px 0 var(--ink);transform-origin:80% 50%}
+  #gap{position:absolute;left:74px;top:962px;font-size:58px;font-weight:900;color:var(--ink)}
+  #gap b{color:var(--red);font-size:74px}
+  #ckwrap{position:absolute;left:74px;top:1078px;display:flex;align-items:center;gap:26px;
+          right:74px}
+  #ckbox{width:96px;height:96px;border:5px solid var(--ink);background:#fff;
+         display:flex;align-items:center;justify-content:center;font-size:74px;
+         color:var(--red);font-weight:900;flex:0 0 96px}
+  #cktxt{font-size:42px;font-weight:800;color:#2E2924;line-height:1.32}
+  #cktxt s{color:#A8A29A;font-weight:600}
+  #s4tail{position:absolute;left:74px;top:1256px;font-size:62px;font-weight:900;
+          color:var(--cream);background:var(--ink);padding:16px 32px;display:inline-block}
+  #s4tail2{position:absolute;left:78px;top:1388px;font-size:42px;font-weight:700;color:#6B6152}
+
+  /* ================= S5 ================= */
+  #s5{background:var(--ink);overflow:hidden}
+  #s5bg{position:absolute;inset:-300px;
+        background:repeating-linear-gradient(114deg,
+          rgba(255,199,44,.062) 0 10px, rgba(255,199,44,0) 10px 62px)}
+  #s5in{position:absolute;left:0;top:0;width:1080px;height:1920px;
+        display:flex;flex-direction:column;align-items:center;justify-content:center}
+  #s5 .k{font-size:54px;font-weight:700;color:#8C8278;letter-spacing:.2em}
+  #s5word{display:flex;gap:16px;margin-top:80px}
+  #s5word span{font-size:288px;font-weight:900;line-height:1;color:var(--yel);
+               display:block;-webkit-text-stroke:2px var(--yel)}
+  #s5why{margin-top:92px;font-size:54px;font-weight:700;color:#A89E92;letter-spacing:.04em}
+  #s5cnt{margin-top:46px;font-size:34px;font-weight:600;color:#847A6E;letter-spacing:.14em}
+
+  /* ================= S6 ================= */
+  #s6{background:var(--red)}
+  #s6 .plate{position:absolute;left:70px;right:70px;top:430px;height:600px;
+             background:var(--ink);border:8px solid var(--yel);border-radius:26px;
+             overflow:hidden}
+  #s6 .bracket{position:absolute;width:64px;height:64px;border:8px solid var(--cream);
+               z-index:6;opacity:.9}
+  #reel{position:absolute;left:0;top:190px;width:100%;will-change:transform}
+  .cell{height:300px;display:flex;align-items:center;justify-content:center;gap:36px}
+  .cell .e{font-size:116px;line-height:1}
+  .cell .n{font-size:100px;font-weight:900;color:var(--cream);letter-spacing:.02em}
+  #s6 .glow{position:absolute;inset:0;z-index:3;pointer-events:none;
+      background:linear-gradient(180deg,rgba(20,17,16,.96) 0%,rgba(20,17,16,0) 30%,
+                      rgba(20,17,16,0) 70%,rgba(20,17,16,.96) 100%)}
+  #s6cap{position:absolute;left:0;right:0;top:300px;text-align:center;
+         font-size:38px;font-weight:800;color:#FFF0D2;letter-spacing:.34em}
+  #pay1,#pay2{position:absolute;left:96px;right:96px;height:3px;z-index:5;
+              background:repeating-linear-gradient(90deg,rgba(255,199,44,.55) 0 14px,
+                         rgba(255,199,44,0) 14px 26px)}
+  #ding{position:absolute;left:0;right:0;top:1110px;text-align:center;
+        font-size:110px;font-weight:900;color:var(--yel);opacity:0;
+        text-shadow:0 8px 0 rgba(0,0,0,.35)}
+
+  /* ================= S7 ================= */
+  #s7{background:radial-gradient(circle at 50% 40%,#FFF8E8 0%,#F3E9D2 48%,#E3D5B4 100%)}
+  #ring{position:absolute;left:50%;top:40%;width:220px;height:220px;margin:-110px 0 0 -110px;
+        border:12px solid var(--red);border-radius:50%;opacity:0}
+  #cardshadow{position:absolute;left:50%;top:1268px;width:600px;height:56px;margin-left:-300px;
+              background:radial-gradient(ellipse,rgba(60,40,10,.30),rgba(60,40,10,0) 70%);
+              filter:blur(7px);opacity:0}
+  #cardwrap{position:absolute;left:50%;top:200px;width:700px;height:1011px;margin-left:-350px;
+            will-change:transform}
+  #cardimg{width:100%;height:100%;display:block;border-radius:20px;
+           box-shadow:0 26px 64px rgba(50,35,10,.32),0 0 0 1px rgba(0,0,0,.05)}
+  .stamp{position:absolute;font-weight:900;letter-spacing:.04em;white-space:nowrap;
+         border:6px solid currentColor;padding:12px 26px;border-radius:12px;
+         background:rgba(255,255,255,.86);opacity:0;will-change:transform;
+         backdrop-filter:blur(1px)}
+  #st1{right:-198px;top:566px;font-size:44px;color:var(--red)}
+  #st2{right:-186px;top:724px;font-size:44px;color:var(--grn)}
+  #st3{left:50%;top:922px;margin-left:-236px;font-size:50px;color:#fff;
+       background:var(--red);border-color:#fff;box-shadow:0 0 0 6px var(--red)}
+  #s7cap{position:absolute;left:0;right:0;top:1330px;text-align:center;
+         font-size:78px;font-weight:900;color:var(--ink);letter-spacing:.01em}
+  #s7foot{position:absolute;left:0;right:0;top:1450px;text-align:center;
+          font-size:32px;font-weight:700;color:#8A7F6C;letter-spacing:.1em}
+
+  /* ================= S8 ================= */
+  .flash{position:absolute;inset:0;opacity:0}
+  #f1{background:var(--yel)} #f2{background:var(--red)} #f3{background:var(--ink)}
+  .flash .tag{position:absolute;left:70px;top:112px;font-size:28px;letter-spacing:.3em;
+              font-weight:700}
+  .flash .h{position:absolute;left:0;right:0;top:300px;text-align:center;
+            font-size:176px;font-weight:900;line-height:1.02;letter-spacing:-.02em}
+  .flash .sub{position:absolute;left:0;right:0;top:520px;text-align:center;
+              font-size:44px;font-weight:700;line-height:1.6}
+  .flash .prop{position:absolute;left:70px;right:70px;top:840px}
+  #f1 .tag,#f1 .h{color:var(--ink)} #f1 .sub{color:#6B5510}
+  #f2 .tag,#f2 .h{color:var(--cream)} #f2 .sub{color:#FFD9CE}
+  #f3 .tag,#f3 .h{color:var(--yel)} #f3 .sub{color:#BDB5A8}
+  #chips{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .chip{background:#fff;border:4px solid var(--ink);border-radius:14px;
+        padding:22px 8px;text-align:center;box-shadow:7px 7px 0 var(--ink);opacity:0}
+  .chip .ce{font-size:52px;line-height:1}
+  .chip .cn{margin-top:10px;font-size:30px;font-weight:800;color:var(--ink);letter-spacing:.02em}
+  #bubbles{display:flex;flex-direction:column;gap:22px}
+  #bubbles .b{background:#fff;border:4px solid var(--ink);border-radius:18px;
+              padding:26px 34px;font-size:46px;font-weight:800;color:var(--ink);
+              box-shadow:9px 9px 0 rgba(20,17,16,.55);opacity:0;
+              width:fit-content;max-width:780px}
+  #bubbles .b:nth-child(2){margin-left:150px}
+  #bubbles .b:nth-child(3){margin-left:70px}
+  #bubbles .b:nth-child(4){margin-left:20px;background:var(--yel)}
+  #dice{text-align:center;font-size:340px;line-height:1;margin-top:-70px;opacity:0}
+  #f3 .prop2{position:absolute;left:0;right:0;top:1450px;text-align:center;
+             font-size:40px;font-weight:800;color:#BDB5A8;letter-spacing:.2em;opacity:0}
+
+  /* ================= S9 ================= */
+  #s9{background:#E9E3D6}
+  .pol{position:absolute;width:770px;background:#fff;padding:30px 34px 40px;
+       box-shadow:0 20px 44px rgba(40,30,10,.24);opacity:0;will-change:transform}
+  .pol .val{font-size:96px;font-weight:900;color:var(--ink);line-height:1;letter-spacing:-.03em}
+  .pol .lb{margin-top:16px;font-size:30px;font-weight:700;color:#7A7166;letter-spacing:.1em}
+  .pol .tp{position:absolute;left:50%;top:-24px;width:190px;height:48px;margin-left:-95px;
+           background:rgba(255,199,44,.80);transform:rotate(-4deg);
+           box-shadow:0 3px 8px rgba(0,0,0,.12)}
+  #p1{left:34px;top:300px;transform:rotate(-5deg)}
+  #p2{left:276px;top:610px;transform:rotate(4deg)}
+  #p3{left:64px;top:920px;transform:rotate(-2deg)}
+  #s9cap{position:absolute;left:0;right:0;top:1560px;text-align:center;
+         font-size:46px;font-weight:800;color:var(--ink);line-height:1.5}
+  #s9cap em{font-style:normal;color:var(--red)}
+
+  /* ================= S10 ================= */
+  #s10{background:var(--ink);overflow:hidden}
+  #s10 .wrap{position:absolute;left:0;top:0;width:1080px;height:1920px;
+             display:flex;flex-direction:column;align-items:center;justify-content:center}
+  #q{font-size:122px;font-weight:900;color:var(--cream);letter-spacing:.01em}
+  #ans{position:relative;margin-top:66px;display:flex;align-items:center;gap:26px}
+  #ans .e{font-size:124px}
+  #ans .w{font-size:176px;font-weight:900;color:var(--yel);letter-spacing:.05em}
+  #ansbox{position:absolute;left:-46px;top:-26px;right:-46px;bottom:-24px;
+          border:7px solid var(--red);border-radius:16px;transform-origin:left center}
+  #cmd{margin-top:110px;background:#221E1B;border:3px solid #3A342F;border-radius:12px;
+       padding:26px 40px;font-size:36px;color:#9BE38B;letter-spacing:.01em}
+  #cmd .p{color:#6E675F}
+  #cur{display:inline-block;width:15px;height:36px;background:#9BE38B;
+       vertical-align:-5px;margin-left:6px}
+  #again{margin-top:56px;font-size:40px;font-weight:700;color:#8C8278;letter-spacing:.08em}
+  #s10strip{position:absolute;left:0;right:0;bottom:222px;display:flex;
+            justify-content:center;align-items:center;gap:26px;font-size:44px;opacity:.20}
+  #brand{position:absolute;left:0;right:0;bottom:130px;text-align:center;
+         font-size:24px;letter-spacing:.42em;color:#5A534B}
+
+  /* ================= 全域 ================= */
+  #grain{position:absolute;inset:-160px;pointer-events:none;z-index:70;opacity:.075;
+         mix-blend-mode:soft-light;will-change:transform;
+         background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>")}
+  #scan{position:absolute;inset:0;pointer-events:none;z-index:71;opacity:.045;
+        background:repeating-linear-gradient(180deg,rgba(0,0,0,.9) 0 2px,transparent 2px 5px)}
+  #vig{position:absolute;inset:0;pointer-events:none;z-index:72;
+       background:radial-gradient(ellipse at 50% 46%,rgba(0,0,0,0) 54%,rgba(0,0,0,.28) 100%)}
+  #hit{position:absolute;inset:0;pointer-events:none;z-index:73;background:#fff;opacity:0}
+  #veil{position:absolute;inset:0;pointer-events:none;z-index:80;background:#0B0A09;opacity:0}
+  #veil{position:absolute;inset:0;pointer-events:none;z-index:80;background:#0B0A09;opacity:0}
+  #tag{position:absolute;left:0;right:0;bottom:92px;text-align:center;z-index:60;
+       font-size:23px;letter-spacing:.42em;opacity:0}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- ============ S1 ============ -->
+  <section id="s1">
+    <div id="clock" class="mono">18:59</div>
+    <div id="clocktick"></div>
+    <div id="s1a" class="heavy">下班了。</div>
+    <div id="s1b">但没人动。</div>
+    <div id="s1foot" class="mono">OFFICE HOUR 09:00 — ???</div>
+  </section>
+
+  <!-- ============ S2 ============ -->
+  <section id="s2">
+    <div class="bar">
+      <div class="t">项目群 (47)</div>
+      <div class="r mono">18:59</div>
+    </div>
+    <div class="chat">
+      <div class="row">
+        <div class="av boss">🧑‍💼</div>
+        <div class="bub left" id="boss1">这个需求今天能上吗</div>
+      </div>
+      <div class="row" id="typingrow">
+        <div class="av boss">🧑‍💼</div>
+        <div id="typing"><i></i><i></i><i></i></div>
+      </div>
+      <div class="row rev" id="merow">
+        <div class="av me">🙂</div>
+        <div class="bub right" id="me1">能</div>
+      </div>
+      <div class="row rev" id="merow2">
+        <div class="av me">🙂</div>
+        <div class="bub right" id="me2" style="background:#C9F0AE"></div>
+      </div>
+    </div>
+    <div id="s2sticker"><div class="s" id="s2st">先答应，<br>再想办法。</div></div>
+    <div id="s2note">据不完全统计，社畜 87% 的加班，<br>都始于一句「能」。</div>
+  </section>
+
+  <!-- ============ S3 ============ -->
+  <section id="s3">
+    <div id="viewport"><div id="list"></div></div>
+    <div id="s3hud">
+      <div class="lbl mono">SCROLLING</div>
+      <div class="big mono" id="s3clock">8:12</div>
+    </div>
+    <div id="s3mark"></div>
+    <div id="s3tag">上个月点过 6 次</div>
+    <div id="s3end" class="mono">—— 到底了 ——</div>
+    <div id="s3bar">
+      <div>
+        <div class="l">已浏览</div>
+        <div class="n mono"><b id="s3n1">0</b> / 47</div>
+      </div>
+      <div id="s3btn">决定</div>
+    </div>
+  </section>
+
+  <!-- ============ S4 ============ -->
+  <section id="s4">
+    <div id="pmock">
+      <div class="top">
+        <div class="ph2">🥯</div>
+        <div class="pn">猪柳蛋麦满分套餐</div>
+      </div>
+      <div class="prow">
+        <div id="p15" class="mono">¥15.90<div id="slash"></div><span class="lbl2">菜单显示</span></div>
+        <div style="font-size:26px;color:#A8A29A;font-weight:700;letter-spacing:.1em">已选 1 件</div>
+      </div>
+    </div>
+    <div id="p26" class="mono">¥26.50</div>
+    <div id="gap">实际扣款 · 多收 <b>10.6</b></div>
+    <div id="ckwrap">
+      <div id="ckbox">✓</div>
+      <div id="cktxt">随单购早餐卡 <s>¥10.60</s><br>
+        <span style="font-size:34px;color:#8C8377;font-weight:600">你没勾，但已经勾上了</span></div>
+    </div>
+    <div id="s4tail">默认勾选。</div>
+    <div id="s4tail2">你甚至没看见这行字。</div>
+  </section>
+
+  <!-- ============ S5 ============ -->
+  <section id="s5">
+    <div id="s5bg"></div>
+    <div id="s5in">
+      <div class="k">最后你点了</div>
+      <div id="s5word"><span>老</span><span>三</span><span>样</span></div>
+      <div id="s5why">因为决定，比饿更累</div>
+      <div id="s5cnt">这是你第 4,382 次做同一个决定</div>
+    </div>
+  </section>
+
+  <!-- ============ S6 ============ -->
+  <section id="s6">
+    <div id="s6cap" class="mono">正在抽取今日人设</div>
+    <div class="plate" id="plate">
+      <div id="reel"></div>
+      <div class="glow"></div>
+    </div>
+    <div class="bracket" style="left:54px;top:414px;border-right:none;border-bottom:none"></div>
+    <div class="bracket" style="right:54px;top:414px;border-left:none;border-bottom:none"></div>
+    <div class="bracket" style="left:54px;top:1012px;border-right:none;border-top:none"></div>
+    <div class="bracket" style="right:54px;top:1012px;border-left:none;border-top:none"></div>
+    <div id="pay1"></div>
+    <div id="pay2"></div>
+    <div id="ding">叮。</div>
+  </section>
+
+  <!-- ============ S7 ============ -->
+  <section id="s7">
+    <div id="ring"></div>
+    <div id="cardshadow"></div>
+    <div id="cardwrap">
+      <img id="cardimg" src="assets/card_hero.png" alt="">
+      <div class="stamp" id="st1">人设已锁定</div>
+      <div class="stamp" id="st2">真实在售</div>
+      <div class="stamp" id="st3">¥26.90 已核验</div>
+    </div>
+    <div id="s7cap">3 秒。不用你选。</div>
+    <div id="s7foot" class="mono">PRICE FROM calculate-price · NOT MENU</div>
+  </section>
+
+  <!-- ============ S8 ============ -->
+  <section id="s8">
+    <div class="flash" id="f1">
+      <div class="tag mono">01 / 03 · PERSONAS</div>
+      <div class="h heavy">12 种人设</div>
+      <div class="sub">不用你自我介绍</div>
+      <div class="prop"><div id="chips"></div></div>
+    </div>
+    <div class="flash" id="f2">
+      <div class="tag mono">02 / 03 · SAY IT</div>
+      <div class="h heavy">说人话就行</div>
+      <div class="sub">它听得懂你想要什么</div>
+      <div class="prop"><div id="bubbles">
+        <div class="b">今天想省钱</div>
+        <div class="b">有没有低卡的</div>
+        <div class="b">凌晨了，还在写代码</div>
+        <div class="b">今天加班，来点狠的</div>
+      </div></div>
+    </div>
+    <div class="flash" id="f3">
+      <div class="tag mono">03 / 03 · OR ROLL</div>
+      <div class="h heavy">或者 Roll</div>
+      <div class="sub">把选择权，直接交出去</div>
+      <div class="prop"><div id="dice">🎲</div></div>
+      <div class="prop2 mono">RANDOM PERSONA GENERATOR</div>
+    </div>
+  </section>
+
+  <!-- ============ S9 ============ -->
+  <section id="s9">
+    <div class="pol" id="p1"><div class="tp"></div>
+      <div class="val">47 项</div><div class="lb">当餐在售 · 不是示例数据</div></div>
+    <div class="pol" id="p2"><div class="tp" style="background:rgba(218,42,28,.58);transform:rotate(5deg)"></div>
+      <div class="val">5 家 · 2 城</div><div class="lb">真实门店坐标</div></div>
+    <div class="pol" id="p3"><div class="tp"></div>
+      <div class="val">15.90 → 26.50</div><div class="lb">菜单价与实付的真差额</div></div>
+    <div id="s9cap">全部由 <em>MCP 现查</em><br>没有一个数字是编的</div>
+  </section>
+
+  <!-- ============ S10 ============ -->
+  <section id="s10">
+    <div class="wrap">
+      <div id="q">今天你是谁</div>
+      <div id="ans">
+        <div id="ansbox"></div>
+        <div class="e">🌙</div><div class="w">加班狗</div>
+      </div>
+      <div id="cmd" class="mono"><span class="p">$</span> python3 scripts/demo_run.py<span id="cur"></span></div>
+      <div id="again">或者，再 Roll 一次</div>
+    </div>
+    <div id="s10strip"></div>
+    <div id="brand" class="mono">社畜人设卡 · SHACHIKU PERSONA CARD</div>
+  </section>
+
+  <div id="tag">社畜人设卡 · 麦当劳 MCP</div>
+  <div id="hit"></div>
+  <div id="veil"></div>
+  <div id="veil"></div>
+  <div id="grain"></div>
+  <div id="scan"></div>
+  <div id="vig"></div>
+</div>
+
+<script>
+/* ===================== 工具 ===================== */
+const $ = s => document.querySelector(s);
+const clamp01 = v => v < 0 ? 0 : (v > 1 ? 1 : v);
+const seg = (t, a, b, ease) => {
+  if (b === a) return t >= a ? 1 : 0;
+  const v = clamp01((t - a) / (b - a));
+  return ease ? ease(v) : v;
+};
+const E = {
+  outQuint: v => 1 - Math.pow(1 - v, 5),
+  outQuart: v => 1 - Math.pow(1 - v, 4),
+  outCubic: v => 1 - Math.pow(1 - v, 3),
+  inCubic: v => v * v * v,
+  inOutCubic: v => v < .5 ? 4 * v * v * v : 1 - Math.pow(-2 * v + 2, 3) / 2,
+  outBack: v => { const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(v - 1, 3) + c1 * Math.pow(v - 1, 2); },
+};
+const setO = (el, v) => { if (el) el.style.opacity = String(clamp01(v)); };
+
+window.__DURATION = 23400;
+const DUR = window.__DURATION;
+
+/* ===================== 真实菜单 47 项 ===================== */
+const MENU = [
+  ["精选单人餐三件套",34.5,"🍱"],["人气超值四件套随心选",28.0,"🍱"],
+  ["龙焰芝士棒鸡腿堡三件套",29.9,"🔥"],["龙焰鸡腿堡三件套",26.9,"🔥"],
+  ["龙焰芝士棒鸡腿堡",27.0,"🔥"],["龙焰鸡腿堡",24.0,"🔥"],
+  ["板烧鸡腿堡三件套",34.5,"🍔"],["麦辣鸡腿汉堡三件套",33.5,"🍔"],
+  ["麦香鸡套餐",27.5,"🍔"],["麦辣鸡腿汉堡",22.5,"🍔"],
+  ["板烧鸡腿堡",23.5,"🍔"],["麦香鸡",16.5,"🍔"],
+  ["薄皮V翅双拼十翅",49.9,"🍗"],["BFF四宫格小食盘",40.3,"🍟"],
+  ["堡堡随心拼（7件任选）",73.0,"🍔"],["巨无霸三件套",37.5,"🍔"],
+  ["双层吉士汉堡套餐",34.0,"🍔"],["吉士汉堡包套餐",26.5,"🍔"],
+  ["不素之霸双层牛堡三件套",36.5,"🥩"],["培根蔬萃双层牛堡三件套",35.5,"🥩"],
+  ["巨无霸",26.5,"🍔"],["双层吉士汉堡",23.0,"🍔"],
+  ["不素之霸双层牛堡",25.5,"🥩"],["培根蔬萃双层牛堡",24.5,"🥩"],
+  ["高达吉士双牛堡",22.5,"🧀"],["培根安格斯厚牛堡三件套",45.5,"🥩"],
+  ["芝士安格斯厚牛堡三件套",42.5,"🥩"],["培根安格斯厚牛堡",34.5,"🥩"],
+  ["芝士安格斯厚牛堡",31.5,"🥩"],["薯条",14.0,"🍟"],
+  ["玉米杯",13.0,"🌽"],["苹果片",7.0,"🍎"],
+  ["派",8.5,"🥧"],["经典麦旋风",15.0,"🍦"],
+  ["蓝莓爆爆珠麦旋风",16.0,"🍨"],["圆筒冰淇淋",5.0,"🍦"],
+  ["新地",12.5,"🍨"],["鲜萃咖啡",10.0,"☕"],
+  ["浓浓黑巧（冰/热）",17.9,"🍫"],["“堡”你欢乐套餐",28.0,"🥗"],
+  ["“辣”么快乐套餐",24.0,"🌶"],["酥脆无双套餐",20.5,"🍗"],
+  ["可乐",9.5,"🥤"],["雪碧",9.5,"🥤"],
+  ["纯悦",7.5,"💧"],["【美汁源】“多汁柠柠”",12.0,"🍋"],
+  ["锡兰红茶",11.0,"🍵"],
+];
+
+const PERSONAS = [
+  ["🌙","加班狗"],["🪙","预算战士"],["🥗","热量焦虑党"],["🍦","快乐复读机"],
+  ["🌀","选择困难症"],["🐟","摸鱼大师"],["💻","深夜程序员"],["🧮","省钱精算师"],
+  ["🔥","放纵日"],["🌅","早餐战士"],["👥","团建负责人"],["🎲","随机社畜"],
+];
+
+/* 列表 */
+(function(){
+  let html = "";
+  MENU.forEach(m => {
+    html += `<div class="mrow"><div style="display:flex;align-items:center">
+      <div class="ph">${m[2]}</div><div class="nm">${m[0]}</div></div>
+      <div class="pr mono">¥${m[1].toFixed(1)}</div></div>`;
+  });
+  $("#list").innerHTML = html;
+})();
+
+/* 老虎机 */
+const CELLH = 300, REEL_N = 48;
+(function(){
+  let html = "";
+  for (let i = 0; i < REEL_N; i++){
+    const p = i === REEL_N - 1 ? PERSONAS[0] : PERSONAS[1 + (i % 11)];
+    html += `<div class="cell"><span class="e">${p[0]}</span><span class="n">${p[1]}</span></div>`;
+  }
+  $("#reel").innerHTML = html;
+})();
+
+/* 12 人设 chip */
+$("#s10strip").innerHTML = PERSONAS.map(p => `<span>${p[0]}</span>`).join("");
+$("#chips").innerHTML = PERSONAS.map(p =>
+  `<div class="chip"><div class="ce">${p[0]}</div><div class="cn">${p[1]}</div></div>`).join("");
+
+/* ===================== 时间轴 ===================== */
+const T = {
+  s1b: 1900, s2b: 3760, s3b: 6300, s4b: 8900,
+  s5b: 10100, s6b: 11300, s7b: 15600, s8b: 18000,
+  s9a: 18000, s9b: 20400, s10a: 20400,
+};
+
+function tick(t){
+  let shx = 0, shy = 0, flash = 0;
+
+  /* ---------- S1 ---------- */
+  $("#s1").style.opacity = String(1 - seg(t, T.s1b - 160, T.s1b, E.inCubic));
+  {
+    const live = t > 900;
+    const ck = $("#clock");
+    ck.textContent = live ? "19:00" : "18:59";
+    ck.style.color = live ? "#FF3B2F" : "#FBF6EC";
+    ck.style.textShadow = live ? "0 0 80px rgba(218,42,28,.55)" : "none";
+    const beat = (t % 1000) / 1000;
+    ck.style.transform = `scale(${1 + 0.014 * Math.exp(-beat * 7)})`;
+    const a = seg(t, 980, 1180, E.outCubic);
+    const aEl = $("#s1a");
+    aEl.style.opacity = String(seg(t, 980, 1080));
+    aEl.style.transform = `translateY(${(1 - a) * 34}px)`;
+    aEl.style.clipPath = `inset(0 ${(1 - a) * 100}% 0 0)`;
+    const b = seg(t, 1330, 1520, E.outCubic);
+    const bEl = $("#s1b");
+    bEl.style.opacity = String(seg(t, 1330, 1440));
+    bEl.style.transform = `translateY(${(1 - b) * 26}px)`;
+    bEl.style.clipPath = `inset(0 ${(1 - b) * 100}% 0 0)`;
+    $("#clocktick").style.transform = `scaleX(${0.4 + 0.6 * seg(t, 200, 700, E.outCubic)})`;
+    $("#s1foot").style.opacity = String(0.5 * seg(t, 1600, 1800));
+  }
+
+  /* ---------- S2 ---------- */
+  {
+    const inS = seg(t, 1900, 2020);
+    const outS = seg(t, T.s2b - 170, T.s2b, E.inCubic);
+    $("#s2").style.opacity = String(inS * (1 - outS));
+    if (inS > 0 && outS < 1){
+      const p = seg(t, 2060, 2270, E.outBack);
+      const boss = $("#boss1");
+      boss.style.opacity = String(seg(t, 2020, 2110));
+      boss.style.transform = `scale(${0.55 + 0.45 * p})`;
+
+      setO($("#typingrow"), seg(t, 2430, 2500) * (1 - seg(t, 2750, 2800)));
+      document.querySelectorAll("#typing i").forEach((d, i) => {
+        d.style.opacity = String(0.3 + 0.7 * Math.max(0, Math.sin(t / 190 + i * 1.1)));
+      });
+
+      const me1 = $("#me1");
+      me1.style.opacity = String(seg(t, 2790, 2890));
+      me1.style.transform = `scale(${0.7 + 0.3 * seg(t, 2790, 2980, E.outBack)})`;
+
+      const n = Math.floor(seg(t, 3120, 3310) * 2);
+      const me2 = $("#me2");
+      me2.textContent = n <= 0 ? "" : (n === 1 ? "…" : "……");
+      setO($("#merow2"), n > 0 ? 1 : 0);
+
+      const st = seg(t, 3340, 3520, E.outBack);
+      const stEl = $("#s2st");
+      stEl.style.opacity = String(seg(t, 3340, 3440));
+      stEl.style.transform = `rotate(-2deg) scale(${0.6 + 0.4 * st})`;
+      if (t > 3340 && t < 3560) shx += 7 * (1 - seg(t, 3340, 3560));
+
+      const nt = seg(t, 3520, 3680, E.outCubic);
+      const ntEl = $("#s2note");
+      ntEl.style.opacity = String(nt * 0.9);
+      ntEl.style.transform = `translateY(${(1 - nt) * 20}px)`;
+    }
+  }
+
+  /* ---------- S3 ---------- */
+  {
+    const inS = seg(t, 3760, 3860);
+    const outS = seg(t, T.s3b - 180, T.s3b, E.inCubic);
+    $("#s3").style.opacity = String(inS * (1 - outS));
+    if (inS > 0 && outS < 1){
+      const ROWH = 132, total = MENU.length;
+      const startY = 220;
+      const endY = 900 - (total - 1) * ROWH - ROWH / 2;
+      // 匀速滑一段时间再急停 —— outQuint 太软，前 40% 就把路走完了，不像"疯狂上滑"
+      const u = clamp01((t - 3880) / 1580);
+      const p = u < 0.78
+        ? (u / 0.78) * 0.80
+        : 0.80 + 0.20 * E.outQuint((u - 0.78) / 0.22);
+      let y = startY + (endY - startY) * p;
+      if (t > 5460) y += Math.sin(seg(t, 5460, 5760) * Math.PI) * -18;
+      $("#list").style.transform = `translateY(${y}px)`;
+
+      const passed = Math.min(total, Math.round(p * (total - 1)) + 1);
+      $("#s3n1").textContent = String(passed);
+      const sec = 12 + Math.floor(p * 35);
+      $("#s3clock").textContent = "8:" + String(sec).padStart(2, "0");
+
+      const mk = $("#s3mark");
+      const mp = seg(t, 5540, 5680, E.outBack);
+      mk.style.opacity = String(seg(t, 5520, 5620));
+      mk.style.top = (900 - ROWH / 2) + "px";
+      mk.style.transform = `scale(${0.86 + 0.14 * mp})`;
+
+      const tg = seg(t, 5800, 6000, E.outBack);
+      const tgEl = $("#s3tag");
+      tgEl.style.opacity = String(seg(t, 5780, 5870));
+      tgEl.style.top = (900 - ROWH / 2 + ROWH + 22) + "px";
+      tgEl.style.transform = `translateX(-50%) rotate(-4deg) scale(${0.6 + 0.4 * tg})`;
+
+      setO($("#s3end"), 0.95 * seg(t, 5700, 5900));
+      // 按钮：从「决定」变成「算了」
+      const flip = seg(t, 6040, 6120);
+      const btn = $("#s3btn");
+      btn.textContent = flip > 0.5 ? "算了" : "决定";
+      btn.style.transform = `scale(${1 - 0.06 * Math.sin(seg(t, 6040, 6180) * Math.PI)})`;
+    }
+  }
+
+  /* ---------- S4 ---------- */
+  {
+    const inS = seg(t, 6300, 6420);
+    const outS = seg(t, T.s4b - 180, T.s4b, E.inCubic);
+    $("#s4").style.opacity = String(inS * (1 - outS));
+    if (inS > 0 && outS < 1){
+      const pIn = seg(t, 6420, 6640, E.outCubic);
+      const pm = $("#pmock");
+      pm.style.opacity = String(seg(t, 6380, 6470));
+      pm.style.transform = `translateY(${(1 - pIn) * 44}px) scale(${0.96 + 0.04 * pIn})`;
+
+      const sl = seg(t, 6830, 7000, E.outCubic);
+      $("#slash").style.width = (sl * 116) + "%";
+
+      const pp = seg(t, 7010, 7210, E.outQuint);
+      const p26 = $("#p26");
+      p26.style.opacity = String(seg(t, 7010, 7080));
+      p26.style.transform = `scale(${2.4 - 1.4 * pp}) rotate(${-6 + 6 * pp}deg)`;
+      if (t > 7010 && t < 7230){
+        flash = Math.max(flash, 0.13 * (1 - seg(t, 7010, 7230)));
+        shx += 11 * (1 - seg(t, 7010, 7230));
+      }
+
+      const g = seg(t, 7340, 7490, E.outCubic);
+      const gapEl = $("#gap");
+      gapEl.style.opacity = String(g);
+      gapEl.style.transform = `translateX(${(1 - g) * -28}px)`;
+
+      const ckIn = seg(t, 7620, 7760, E.outBack);
+      const cw = $("#ckwrap");
+      cw.style.opacity = String(seg(t, 7600, 7690));
+      cw.style.transform = `scale(${0.85 + 0.15 * ckIn})`;
+      const checked = t > 7880;
+      const cb = $("#ckbox");
+      cb.textContent = checked ? "✓" : "";
+      cb.style.background = checked ? "#FFE9B8" : "#fff";
+      if (t > 7880 && t < 7960) shx += 5 * (1 - seg(t, 7880, 7960));
+
+      const tail = seg(t, 8140, 8300, E.outCubic);
+      const tailEl = $("#s4tail");
+      tailEl.style.opacity = String(tail);
+      tailEl.style.transform = `translateY(${(1 - tail) * 22}px)`;
+      const t2 = seg(t, 8460, 8610);
+      const t2El = $("#s4tail2");
+      t2El.style.opacity = String(t2);
+      t2El.style.transform = `translateY(${(1 - t2) * 16}px)`;
+    }
+  }
+
+  /* ---------- S5 ---------- */
+  {
+    const inS = seg(t, 8900, 9010);
+    const outS = seg(t, T.s5b - 170, T.s5b, E.inCubic);
+    $("#s5").style.opacity = String(inS * (1 - outS));
+    if (inS > 0 && outS < 1){
+      $("#s5bg").style.transform = `translateX(${(t - 8900) * 0.035}px)`;
+
+      const k = seg(t, 8960, 9090, E.outCubic);
+      const kEl = document.querySelector("#s5 .k");
+      kEl.style.opacity = String(k);
+      kEl.style.transform = `translateY(${(1 - k) * 18}px)`;
+
+      let amp = 0;
+      document.querySelectorAll("#s5word span").forEach((el, i) => {
+        const at = 9130 + i * 120;
+        const p = seg(t, at, at + 200, E.outQuint);
+        el.style.opacity = String(seg(t, at, at + 70));
+        el.style.transform = `scale(${2.3 - 1.3 * p})`;
+        if (t > at && t < at + 220) amp = Math.max(amp, 15 * (1 - seg(t, at, at + 220)));
+      });
+      if (t > 9560 && t < 9780) amp = Math.max(amp, 11 * (1 - seg(t, 9560, 9780)));
+      shx += amp; shy += amp * 0.6;
+
+      const w = seg(t, 9660, 9820, E.outCubic);
+      const wEl = $("#s5why");
+      wEl.style.opacity = String(w);
+      wEl.style.transform = `translateY(${(1 - w) * 18}px)`;
+      setO($("#s5cnt"), seg(t, 9820, 9960));
+    }
+  }
+
+  /* ---------- S6 ---------- */
+  {
+    const inS = seg(t, 10100, 10190);
+    const outS = seg(t, T.s6b - 160, T.s6b, E.inCubic);
+    $("#s6").style.opacity = String(inS * (1 - outS));
+    if (inS > 0 && outS < 1){
+      const pl = $("#plate");
+      const pin = seg(t, 10100, 10300, E.outQuint);
+      pl.style.transform = `scale(${0.92 + 0.08 * pin})`;
+
+      const endY = 190 - (REEL_N - 1) * CELLH - CELLH / 2;
+      const p = seg(t, 10280, 10950, E.outQuint);
+      let y = endY * p;
+      if (t > 10950){
+        const s = seg(t, 10950, 11240);
+        y += Math.sin(s * Math.PI * 2.2) * 24 * (1 - s);
+      }
+      const reel = $("#reel");
+      reel.style.transform = `translateY(${y}px)`;
+      const prev = endY * E.outQuint(seg(t - 42, 10280, 10950, E.outQuint));
+      const speed = Math.abs(y - prev);
+      reel.style.filter = speed > 5 ? `blur(${Math.min(10, speed * 0.14)}px)` : "none";
+
+      $("#pay1").style.top = "728px";
+      $("#pay2").style.top = "1026px";
+      $("#pay1").style.opacity = $("#pay2").style.opacity = String(0.9 * seg(t, 10300, 10500));
+      const ding = $("#ding");
+      const dp = seg(t, 10960, 11140, E.outBack);
+      ding.style.opacity = String(seg(t, 10960, 11040));
+      ding.style.transform = `scale(${0.3 + 0.7 * dp}) rotate(${-4 * (1 - dp)}deg)`;
+      if (t > 10960 && t < 11200){
+        flash = Math.max(flash, 0.16 * (1 - seg(t, 10960, 11200)));
+        shx += 9 * (1 - seg(t, 10960, 11200));
+      }
+      setO($("#s6cap"), 0.9 * seg(t, 10160, 10320));
+    }
+  }
+
+  /* ---------- S7 ---------- */
+  {
+    const inS = seg(t, 11300, 11390);
+    const outS = seg(t, T.s7b - 190, T.s7b, E.inCubic);
+    $("#s7").style.opacity = String(inS * (1 - outS));
+    if (inS > 0 && outS < 1){
+      const p = seg(t, 11360, 11740, E.outQuint);
+      const wrap = $("#cardwrap");
+      wrap.style.opacity = String(seg(t, 11360, 11450));
+      const sq = (t > 11740 && t < 11960) ? Math.sin(seg(t, 11740, 11960) * Math.PI) * 0.012 : 0;
+      wrap.style.transform =
+        `translateY(${-1500 * (1 - p)}px) rotate(${-7 * (1 - p)}deg) scale(${1 + sq})`;
+
+      const sh = $("#cardshadow");
+      sh.style.opacity = String(0.6 * p);
+      sh.style.transform = `scale(${0.5 + 0.5 * p})`;
+
+      const rp = seg(t, 11720, 12160, E.outCubic);
+      const ring = $("#ring");
+      ring.style.opacity = String(0.85 * (1 - rp));
+      ring.style.transform = `scale(${0.2 + 5.4 * rp})`;
+      ring.style.borderWidth = (13 * (1 - rp) + 2) + "px";
+
+      if (t > 11720 && t < 11880) shx += 10 * (1 - seg(t, 11720, 11880));
+
+      const stamps = [
+        { el: "#st1", at: 12090, rot: -8 },
+        { el: "#st2", at: 12960, rot: 7 },
+        { el: "#st3", at: 13850, rot: -4 },
+      ];
+      let hit = 0;
+      stamps.forEach(s => {
+        const el = $(s.el);
+        const q = seg(t, s.at, s.at + 270, E.outQuint);
+        el.style.opacity = String(seg(t, s.at, s.at + 70));
+        const sc = 3.0 - 2.0 * q + Math.sin(q * Math.PI) * 0.05;
+        el.style.transform = `rotate(${s.rot}deg) scale(${sc})`;
+        if (t > s.at && t < s.at + 210){
+          hit = Math.max(hit, 13 * (1 - seg(t, s.at, s.at + 210)));
+          flash = Math.max(flash, 0.12 * (1 - seg(t, s.at, s.at + 170)));
+        }
+      });
+      shx += hit; shy += hit * 0.7;
+
+      const cap = seg(t, 14650, 14890, E.outCubic);
+      const capEl = $("#s7cap");
+      capEl.style.opacity = String(cap);
+      capEl.style.transform = `translateY(${(1 - cap) * 26}px)`;
+      const ft = seg(t, 15050, 15250);
+      const ftEl = $("#s7foot");
+      ftEl.style.opacity = String(ft * 0.9);
+      ftEl.style.transform = `translateY(${(1 - ft) * 14}px)`;
+    }
+  }
+
+  /* ---------- S8 ---------- */
+  {
+    const panels = [
+      { el: "#f1", a: 15600, b: 16400 },
+      { el: "#f2", a: 16400, b: 17200 },
+      { el: "#f3", a: 17200, b: 18000 },
+    ];
+    $("#s8").style.opacity = String(seg(t, 15540, 15620) * (1 - seg(t, 17960, 18040)));
+    if (t >= 15540 && t < 18040){
+      panels.forEach(pn => {
+        const el = $(pn.el);
+        const on = t >= pn.a && t < pn.b;
+        if (!on){ el.style.opacity = "0"; return; }
+        el.style.opacity = "1";
+        const local = t - pn.a, dur = pn.b - pn.a;
+        const pIn = seg(local, 0, 190, E.outQuint);
+        const h = el.querySelector(".h");
+        h.style.opacity = String(seg(local, 0, 120));
+        h.style.transform = `translateY(${(1 - pIn) * 54}px) scale(${0.88 + 0.12 * pIn})`;
+        const sIn = seg(local, 110, 290, E.outCubic);
+        const sub = el.querySelector(".sub");
+        sub.style.opacity = String(sIn);
+        sub.style.transform = `translateY(${(1 - sIn) * 26}px)`;
+        el.querySelector(".tag").style.opacity = String(0.7 * seg(local, 0, 140));
+        if (local < 150) shx += 9 * (1 - local / 150);
+
+        if (pn.el === "#f1"){
+          document.querySelectorAll(".chip").forEach((c, k) => {
+            const at = 170 + k * 34;
+            const q = seg(local, at, at + 200, E.outBack);
+            c.style.opacity = String(seg(local, at, at + 70));
+            c.style.transform = `scale(${0.3 + 0.7 * q})`;
+          });
+        }
+        if (pn.el === "#f2"){
+          document.querySelectorAll("#bubbles .b").forEach((b, k) => {
+            const at = 190 + k * 130;
+            const q = seg(local, at, at + 220, E.outBack);
+            b.style.opacity = String(seg(local, at, at + 80));
+            b.style.transform = `translateY(${(1 - q) * 40}px) scale(${0.9 + 0.1 * q})`;
+          });
+        }
+        if (pn.el === "#f3"){
+          const d = $("#dice");
+          const q = seg(local, 150, 700, E.outQuart);
+          d.style.opacity = String(seg(local, 150, 260));
+          d.style.transform = `rotate(${(1 - q) * 340}deg) scale(${0.5 + 0.5 * q})`;
+          const p2 = $("#f3 .prop2");
+          p2.style.opacity = String(0.9 * seg(local, 420, 600));
+        }
+        if (dur - local < 90) el.style.opacity = String(1 - (local - (dur - 90)) / 90);
+      });
+    }
+  }
+
+  /* ---------- S9 ---------- */
+  {
+    const inS = seg(t, T.s9a, T.s9a + 110);
+    const outS = seg(t, T.s9b - 190, T.s9b, E.inCubic);
+    $("#s9").style.opacity = String(inS * (1 - outS));
+    if (inS > 0 && outS < 1){
+      const cards = [
+        { el: "#p1", at: 18120, rot: -5 },
+        { el: "#p2", at: 18640, rot: 4 },
+        { el: "#p3", at: 19160, rot: -2 },
+      ];
+      let amp = 0;
+      cards.forEach(c => {
+        const el = $(c.el);
+        const p = seg(t, c.at, c.at + 340, E.outQuint);
+        el.style.opacity = String(seg(t, c.at, c.at + 90));
+        el.style.transform =
+          `rotate(${c.rot + (1 - p) * 10}deg) translateY(${(1 - p) * -80}px) scale(${0.88 + 0.12 * p})`;
+        if (t > c.at && t < c.at + 210) amp = Math.max(amp, 9 * (1 - seg(t, c.at, c.at + 210)));
+      });
+      shx += amp;
+      const cap = seg(t, 19760, 19960, E.outCubic);
+      const capEl = $("#s9cap");
+      capEl.style.opacity = String(cap);
+      capEl.style.transform = `translateY(${(1 - cap) * 22}px)`;
+    }
+  }
+
+  /* ---------- S10 ---------- */
+  {
+    const inS = seg(t, T.s10a, T.s10a + 140);
+    $("#s10").style.opacity = String(inS * (1 - seg(t, 22860, 23360, E.inOutCubic)));
+    if (inS > 0){
+      const q = seg(t, 20480, 20860, E.outQuint);
+      const qEl = $("#q");
+      qEl.style.opacity = String(seg(t, 20480, 20620));
+      qEl.style.transform = `translateY(${(1 - q) * 46}px)`;
+
+      const ab = seg(t, 21120, 21400, E.outBack);
+      const ans = $("#ans");
+      ans.style.opacity = String(seg(t, 21120, 21240));
+      ans.style.transform = `scale(${0.7 + 0.3 * ab}) rotate(${(1 - ab) * -6}deg)`;
+      const boxP = seg(t, 21180, 21600, E.outCubic);
+      const box = $("#ansbox");
+      box.style.opacity = String(seg(t, 21180, 21340));
+      box.style.transform = `rotate(-2deg) scaleX(${boxP})`;
+      if (t > 21120 && t < 21360) shx += 12 * (1 - seg(t, 21120, 21360));
+
+      const c = seg(t, 21800, 22000, E.outCubic);
+      const cmd = $("#cmd");
+      cmd.style.opacity = String(seg(t, 21780, 21900));
+      cmd.style.transform = `translateY(${(1 - c) * 26}px)`;
+      $("#cur").style.opacity = (Math.floor(t / 420) % 2 === 0) ? "1" : "0";
+
+      const ag = seg(t, 22460, 22660, E.outCubic);
+      const agEl = $("#again");
+      agEl.style.opacity = String(ag);
+      agEl.style.transform = `translateY(${(1 - ag) * 20}px)`;
+      setO($("#s10strip"), 0.9 * seg(t, 22700, 22900));
+      setO($("#brand"), 0.9 * seg(t, 22800, 23000));
+    }
+  }
+
+  /* ---------- 全域 ---------- */
+  shx += Math.sin(t * 0.9) * 0.35;
+  shy += Math.cos(t * 1.13) * 0.3;
+  $("#stage").style.transform = `translate(${shx.toFixed(2)}px,${shy.toFixed(2)}px)`;
+  $("#hit").style.opacity = String(clamp01(flash));
+  $("#grain").style.transform =
+    `translate(${((t * 0.41) % 60).toFixed(1)}px,${((t * 0.67) % 60).toFixed(1)}px)`;
+  $("#veil").style.opacity = String(seg(t, 22860, 23360, E.inOutCubic));
+  $("#veil").style.opacity = String(seg(t, 22860, 23360, E.inOutCubic));
+
+  const dark = (t > 8890 && t < 10120) || (t > 17120 && t < 18060) || t > 20300;
+  const tag = $("#tag");
+  // 片尾已有专属品牌行，角标要让位，否则两行字叠在一起
+  tag.style.opacity = String(
+    0.9 * seg(t, 10100, 10400) * (1 - seg(t, 20240, 20440)) * (1 - seg(t, 22860, 23200)));
+  tag.style.color = dark ? "rgba(251,246,236,.34)" : "rgba(20,17,16,.30)";
+}
+
+window.renderAt = ms => tick(ms);
+window.tick = tick;
+
+if (!/[?&]still=1/.test(location.search)) {
+  const t0 = performance.now();
+  (function loop(){
+    const t = performance.now() - t0;
+    tick(Math.min(t, DUR));
+    if (t < DUR) requestAnimationFrame(loop);
+  })();
+} else {
+  tick(0);
+}
+</script>
+</body>
+</html>

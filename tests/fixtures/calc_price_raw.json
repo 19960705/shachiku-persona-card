@@ -1,0 +1,28 @@
+{
+  "_note": "calculate-price 真实响应（门店 1400483，猪柳蛋麦满分套餐 ×1）。注意菜单价 15.90 是随单购早餐卡价，实付 26.50。",
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-21 09:35:03",
+  "data": {
+    "productOriginalPrice": 2650,
+    "productPrice": 2650,
+    "originalPrice": 2650,
+    "discount": 0,
+    "price": 2650,
+    "productList": [
+      {
+        "productCode": "9900003458",
+        "productName": "猪柳蛋麦满分套餐",
+        "quantity": 1,
+        "originalSubtotal": 2650,
+        "subtotal": 2650
+      }
+    ],
+    "takeWayList": [
+      { "code": "eat-in", "title": "堂食", "subtitle": "店内用餐" },
+      { "code": "locker-in", "title": "外带", "subtitle": "店内取餐柜" }
+    ]
+  },
+  "traceId": "fixture"
+}

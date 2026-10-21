@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=760,initial-scale=1">
+<title>今日人设卡 · 加班狗</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#EFE9DD;display:flex;align-items:center;justify-content:center;
+ min-height:100vh;font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+ padding:24px}
+.card{width:720px;min-height:1040px;background:#FFFDF8;border-radius:28px;overflow:hidden;
+ position:relative;box-shadow:0 24px 60px rgba(64,44,26,.16);
+ display:flex;flex-direction:column;padding:0 56px 44px}
+.topbar{height:14px;background:linear-gradient(90deg,#DA291C 0%,#DA291C 62%,#FFC72C 62%,#FFC72C 100%);
+ margin:0 -56px 0}
+.hd{display:flex;justify-content:space-between;align-items:flex-end;padding:34px 0 0}
+.kicker{font-size:15px;letter-spacing:.32em;color:#B4894F;font-weight:600}
+.mode{font-size:12px;color:#9A8F80;letter-spacing:.18em;margin-top:8px}
+.hd-right{font-size:13px;color:#A99C8B;font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.persona{text-align:center;padding:22px 0 18px}
+.avatar{width:114px;height:114px;margin:0 auto 16px;border-radius:50%;
+ background:radial-gradient(circle at 34% 30%,#FFF6E3,#FFE0A8 62%,#FFD07A);
+ display:flex;align-items:center;justify-content:center;font-size:56px;
+ box-shadow:inset 0 -6px 18px rgba(255,160,40,.22),0 10px 26px rgba(218,41,28,.10)}
+h1{font-size:54px;font-weight:800;letter-spacing:.04em;color:#241C14;line-height:1.12}
+.tagline{margin-top:12px;font-size:22px;color:#7A6A57;letter-spacing:.02em;line-height:1.5}
+.rec{margin-top:6px;background:#FFF6E8;border:1.5px solid #F2DFC2;border-radius:20px;padding:22px 26px}
+.rec-t{font-size:13px;color:#B4894F;letter-spacing:.26em;font-weight:600;margin-bottom:16px}
+.item{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;
+ border-bottom:1px dashed #EBD9BE;font-size:22px;color:#2E2519}
+.item:last-of-type{border-bottom:none}
+.qty{font-size:15px;color:#B4894F;margin-left:8px}
+.iprice{font-size:19px;color:#6E6152;font-variant-numeric:tabular-nums}
+.total{display:flex;justify-content:space-between;align-items:baseline;
+ margin-top:14px;padding-top:16px;border-top:2px solid #E4CFAE}
+.tl{font-size:16px;color:#8A7A66;letter-spacing:.14em}
+.tv{font-size:42px;font-weight:800;color:#DA291C;font-variant-numeric:tabular-nums}
+.saved{font-size:14px;color:#12805C;margin-top:6px;text-align:right}
+.badge{margin-top:18px;display:inline-block;font-size:14px;padding:8px 16px;border-radius:999px;font-weight:600}
+.badge.ok{background:#E6F6EE;color:#0E7A55;border:1px solid #BFE7D4}
+.badge.warn{background:#FFF4DF;color:#9A6A17;border:1px solid #F0DCAF}
+.pnote{margin-top:10px;font-size:13px;line-height:1.6;color:#9A6A17}
+.why{margin-top:18px;padding:0 4px}
+.why-t{font-size:13px;color:#B4894F;letter-spacing:.26em;font-weight:600;margin-bottom:10px}
+.why ul{list-style:none}
+.why li{font-size:16px;color:#6E6152;line-height:1.7;padding-left:18px;position:relative}
+.why li::before{content:"·";position:absolute;left:6px;color:#D2A25F;font-weight:800}
+.tips{margin-top:14px}
+.tips li::before{content:"›";color:#C9A87A}
+.meta{margin-top:auto;padding-top:20px;border-top:1.5px solid #EFE3CF;font-size:15px;color:#6E6152;line-height:2}
+.meta span{display:inline-block;width:56px;color:#B4894F;letter-spacing:.1em}
+.note{font-size:13px;color:#9A8F80;margin-top:10px;line-height:1.7}
+.ft{margin-top:16px;text-align:center;font-size:19px;color:#241C14;letter-spacing:.06em}
+.dot{margin:0 10px;color:#D2A25F}
+@media print{body{background:#fff}}
+</style>
+</head>
+<body>
+
+<section class="card">
+  <div class="topbar"></div>
+  <header class="hd">
+    <div class="hd-left">
+      <div class="kicker">今日人设卡</div>
+      <div class="mode">点餐模式</div>
+    </div>
+    <div class="hd-right">No.SC-20261021-1111</div>
+  </header>
+
+  <div class="persona">
+    <div class="avatar">🌙</div>
+    <h1>加班狗</h1>
+    <p class="tagline">「工位到取餐台，是你今天唯一的运动」</p>
+  </div>
+
+  <div class="rec">
+    <div class="rec-t">今日推荐</div>
+    <div class="item"><span class="iname">龙焰鸡腿堡三件套</span><span class="iprice">¥26.90</span></div>
+    <div class="total">
+      <span class="tl">合计</span>
+      <span class="tv">¥26.90</span>
+    </div>
+    
+    <div class="badge ok">
+      ✓ 价格已实时核验
+    </div>
+    
+  </div>
+
+  <div class="why"><div class="why-t">为什么是它</div><ul><li>龙焰鸡腿堡三件套：主食扎实(+0.9)、重口味(+0.5)、套餐形态(+0.5)</li></ul></div>
+  <div class="why tips"><div class="why-t">小贴士</div><ul><li>别选需要剥壳、拆包装的东西，一只手要留给鼠标</li></ul></div>
+
+  <div class="meta">
+    <div><span>门店</span>麦当劳汕头东厦壹佰餐厅</div>
+    <div><span>时段</span>午餐 · 2026-10-21 11:11</div>
+  </div>
+
+  
+
+  <footer class="ft">
+    <span>要下单吗？</span>
+    <span class="dot">·</span>
+    <span>还是再 Roll 一次？</span>
+  </footer>
+</section>
+</body>
+</html>

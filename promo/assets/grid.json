@@ -1,0 +1,86 @@
+[
+  {
+    "id": "overtime_dog",
+    "name": "加班狗",
+    "emoji": "🌙",
+    "pick": "龙焰鸡腿堡三件套",
+    "price": 26.9
+  },
+  {
+    "id": "budget_warrior",
+    "name": "预算战士",
+    "emoji": "🪙",
+    "pick": "酥脆无双套餐",
+    "price": 20.5
+  },
+  {
+    "id": "calorie_anxiety",
+    "name": "热量焦虑党",
+    "emoji": "🥗",
+    "pick": "“堡”你欢乐套餐",
+    "price": 28.0
+  },
+  {
+    "id": "happy_looper",
+    "name": "快乐复读机",
+    "emoji": "🍦",
+    "pick": "新地",
+    "price": 12.5
+  },
+  {
+    "id": "indecisive",
+    "name": "选择困难症",
+    "emoji": "🌀",
+    "pick": "龙焰鸡腿堡三件套",
+    "price": 26.9
+  },
+  {
+    "id": "slack_master",
+    "name": "摸鱼大师",
+    "emoji": "🐟",
+    "pick": "鲜萃咖啡 + 薯条",
+    "price": 24.0
+  },
+  {
+    "id": "midnight_coder",
+    "name": "深夜程序员",
+    "emoji": "💻",
+    "pick": "龙焰鸡腿堡三件套",
+    "price": 26.9
+  },
+  {
+    "id": "thrift_actuary",
+    "name": "省钱精算师",
+    "emoji": "🧮",
+    "pick": "酥脆无双套餐",
+    "price": 20.5
+  },
+  {
+    "id": "cheat_day",
+    "name": "放纵日",
+    "emoji": "🔥",
+    "pick": "龙焰芝士棒鸡腿堡 + 薯条 + 蓝莓爆爆珠麦旋风",
+    "price": 57.0
+  },
+  {
+    "id": "breakfast_soldier",
+    "name": "早餐战士",
+    "emoji": "🌅",
+    "pick": "酥脆无双套餐",
+    "price": 20.5
+  },
+  {
+    "id": "team_lead",
+    "name": "团建负责人",
+    "emoji": "👥",
+    "pick": "“辣”么快乐套餐 ×3",
+    "price": 72.0
+  },
+  {
+    "id": "random_office",
+    "name": "随机社畜",
+    "emoji": "🎲",
+    "pick": "麦辣鸡腿汉堡 + 纯悦",
+    "price": 30.0
+  }
+]

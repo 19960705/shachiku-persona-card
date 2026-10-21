@@ -1,0 +1,62 @@
+{
+  "mode": "roll",
+  "persona": {
+    "name": "热量焦虑党",
+    "emoji": "🥗",
+    "id": "calorie_anxiety"
+  },
+  "tagline": "先算热量，再算价格",
+  "selection": {
+    "strategy": "compose",
+    "items": [
+      {
+        "code": "4437",
+        "name": "玉米杯",
+        "price": 13.0,
+        "original_price": 13.0,
+        "role": "相对轻负担",
+        "quantity": 1,
+        "image": ""
+      },
+      {
+        "code": "3757",
+        "name": "纯悦",
+        "price": 7.5,
+        "original_price": 7.5,
+        "role": "配饮料",
+        "quantity": 1,
+        "image": ""
+      }
+    ],
+    "score": 1.2,
+    "reasons": [
+      "玉米杯：相对轻负担(+0.7)、价格带吻合(+0.5)",
+      "纯悦：相对轻负担(+0.7)、配饮料(+0.5)"
+    ],
+    "missing_slots": [],
+    "quantity": 1,
+    "menu_price": 20.5,
+    "menu_original": 20.5,
+    "title": "玉米杯 + 纯悦",
+    "headline": "玉米杯"
+  },
+  "price": {
+    "source": "demo",
+    "total": 20.5,
+    "original": 20.5,
+    "menu_price": 20.5
+  },
+  "store": {
+    "name": "麦当劳汕头东厦壹佰餐厅",
+    "code": "1400483"
+  },
+  "period": "早餐",
+  "time": "2026-10-21 09:32",
+  "card_no": "SC-20261021-6849",
+  "menu_note": "",
+  "tips": [
+    "优先看「500 大卡套餐」，那是官方按热量配好的",
+    "汉堡类可要求去酱，饮料换无糖"
+  ],
+  "seed": null
+}
